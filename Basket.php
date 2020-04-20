@@ -25,10 +25,15 @@
             }
             if($permut == 0)
             { 
-                $Univ = $bdd->query("select Name, IdUnivers from university where IdUnivers in(select IdUnivers from course where IdC  = '".$IdC."' )");
+                $Univ = $bdd->query("select * from university where IdUnivers in(select IdUnivers from faculty where IdF in (select IdF from course where IdC  = '".$IdC."'))");
                 while ($Uni = $Univ->fetch())
                 {
                     $nameUnivers = $Uni["Name"];
+                }
+                $Facs = $bdd->query("select * from faculty where IdF in(select IdF from course where IdC  = '".$IdC."' )");
+                while ($Fac = $Facs->fetch())
+                {
+                    $nameFac = $Fac["Name"];
                 }
                 $permut = $data['NumberLA']; 
                 $ectsTot=$ects;
@@ -38,6 +43,7 @@
                 <div class="Bask">
                     <h1>Here your basket <?php echo $data['NumberLA']?></h1>
                     <h2>University : <?php echo $nameUnivers ?></h2>
+                    <h2>Faculty : <?php echo $nameFac ?></h2>
                         <table id='tabBasket'>
                             <tr>
                                 <th>Course</th>
@@ -54,10 +60,15 @@
             else if($data['NumberLA'] != $permut)
             {
                 $permut = $data['NumberLA']; 
-                $Univ = $bdd->query("select Name, IdUnivers from university where IdUnivers in(select IdUnivers from course where IdC  = '".$IdC."' )");
+                $Univ = $bdd->query("select * from university where IdUnivers in(select IdUnivers from faculty where IdF in (select IdF from course where IdC  = '".$IdC."'))");
                 while ($Uni = $Univ->fetch())
                 {
                     $nameUnivers = $Uni["Name"];
+                }
+                $Facs = $bdd->query("select * from faculty where IdF in(select IdF from course where IdC  = '".$IdC."' )");
+                while ($Fac = $Facs->fetch())
+                {
+                    $nameFac = $Fac["Name"];
                 }
             ?>
                 </table>
@@ -91,6 +102,7 @@
                 <div class="Bask">
                     <h1>Here your basket <?php echo $data['NumberLA']?></h1>
                     <h2>University : <?php echo $nameUnivers ?></h2>
+                    <h2>Faculty : <?php echo $nameFac ?></h2>
                         <table id='tabBasket'>
                             <tr>
                                 <th>Course</th>

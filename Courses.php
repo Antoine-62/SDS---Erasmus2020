@@ -2,8 +2,23 @@
 <div id="container">
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
-
+    <?php 
+        include("include/Configuration.php");
+        $Univers = $bdd->query('SELECT * FROM university where IdUnivers in(select IdUnivers from faculty where IdF = "'.$_POST['faculty'].'")');
+        
+        while ($Univer = $Univers->fetch())
+        {
+            $nameUniv = $Univer['Name'];
+        } 
+        $Facs =  $bdd->query('SELECT * FROM faculty where IdF = "'.$_POST['faculty'].'"');
+        while ($Fac = $Facs->fetch())
+        {
+            $nameFac = $Fac['Name'];
+        } 
+        ?>
         <div class="ListwB">
+            <h1>University : <?php echo $nameUniv;?></h1>
+            <h1>Faculty : <?php echo $nameFac;?></h1>
             <h1>Choose your courses</h1>
             <table>
                 <tr>

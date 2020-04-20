@@ -15,7 +15,6 @@
 
 <section class = "standard">
 	<h2> Universities List </h2>
-    <button onclick="add()">Add new university</button>
 	<table>
                 <tr>
                     <th>Name</th>
@@ -46,6 +45,19 @@
                
 				}
 			?></table>
+      <h1>Create a table</h1>
+      <form name="connection" method="post" action="create.php">
+					University : <input type="text" name="univ" required="Veuillez remplir ce champ"/><br/><br/>
+			
+					<input type="submit" name="valider"/>
+				</form>
+
+        <h1>Update contact of idUnivers=9</h1>
+      <form name="connection" method="post" action="update.php">
+					Contact : <input type="text" name="univ" required="Veuillez remplir ce champ"/><br/><br/>
+			
+					<input type="submit" name="valider"/>
+				</form>
 </section>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>

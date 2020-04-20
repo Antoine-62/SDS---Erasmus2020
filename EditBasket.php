@@ -2,8 +2,25 @@
 <div id="container">
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
+    <?php
 
+    include("include/Configuration.php");
+    $RetFac = $bdd->query("select Name, IdF from faculty where IdF in(select IdF from course where IdC in(select IdC from choose where IdChoose = '".$_POST['item1']."' ))");
+    while ($Fac = $RetFac->fetch())
+       {
+             $nameF = $Fac["Name"];
+             $IdF = $Fac["IdF"];
+    }
+
+    $Univers = $bdd->query("select * from university where IdUnivers in(select IdUnivers from faculty where IdF = '".$IdF."' )");
+    while ($Univer = $Univers->fetch())
+       {
+             $nameU = $Univer["Name"];
+        }
+        ?>
         <div class="ListwB">
+        <h1>University : <?php echo $nameU; ?></h1>
+        <h1>Faculty : <?php echo $nameF; ?></h1>
             <h1>Choose your courses</h1>
             <table>
                 <tr>
@@ -13,7 +30,6 @@
 
 
 <?php
-include("include/Configuration.php");
 //Get the number of the LA
 $RetLA = $bdd->query("select * from choose where IdChoose = '".$_POST['item1']."'");
 while ($NumLA = $RetLA->fetch())
@@ -22,12 +38,7 @@ while ($NumLA = $RetLA->fetch())
     }
 
 /*Display the courses*/
-$RetFac = $bdd->query("select Name, IdF from faculty where IdF in(select IdF from course where IdC in(select IdC from choose where IdChoose = '".$_POST['item1']."' ))");
-while ($Fac = $RetFac->fetch())
-    {
-         $nameF = $Fac["Name"];
-         $IdF = $Fac["IdF"];
-    }
+
     $reponse = $bdd->query('SELECT * FROM course where IdF = "'.$IdF.'"'); 
     while ($data = $reponse->fetch())  
     {  
@@ -228,6 +239,7 @@ for($i=0; $i<$_POST['length']; $i++)
                 success: function(data) {
                     if (data == "success") {
                         alert("Your data have been updated");
+                        document.location.href = "Basket.php";
                     } else {
                     alert("error");
                     }

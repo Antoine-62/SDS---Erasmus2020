@@ -1,8 +1,16 @@
 <?php include("include/Head.php"); ?>
 <?php include("include/Header.php"); ?>
 <?php include("include/nav.php"); ?>
-
+<?php 
+    include("include/Configuration.php");
+    $Unvivers = $bdd->query('SELECT * FROM university where IdUnivers = "'.$_POST['university'].'"'); 
+    while ($Unviver = $Unvivers->fetch())  
+    {
+        $univName = $Unviver['Name'];
+    }
+	?>
 <div class="List">
+    <h1>University : <?php echo $univName;?></h1>
     <h1>Choose your faculties</h1>
     <table>
                 <tr>
@@ -12,7 +20,7 @@
 					<th>Phone</th>                    
                 </tr>
     <?php 
-                include("include/Configuration.php");
+                
 				$reponse = $bdd->query('SELECT * FROM faculty where IdUnivers = "'.$_POST['university'].'"'); 
 				while ($data = $reponse->fetch())  
 				{  
