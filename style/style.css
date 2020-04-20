@@ -93,6 +93,7 @@ nav ul {
     border-bottom: 1px solid #ddd;
     padding: 2% 0%;
   }
+  
 
 .Basket{
     width: 30%;
@@ -106,6 +107,8 @@ nav ul {
     overflow: hidden;
     
 }
+
+
 
 .Basket h1{
     margin-top: 0px;
@@ -121,6 +124,34 @@ nav ul {
 .Basket #footBask{
     bottom: 0%;
     position: absolute;
+}
+
+.Basket2{
+  width: 30%;
+  margin: 2% 5%;
+  left: 60%;
+  text-align: center;
+  background-color: #f6f6f6d7;;
+  border-radius:6px;
+  height: 70%;
+  overflow: hidden;
+  
+}
+
+.Basket2 h1{
+  margin-top: 0px;
+  border-radius:6px;
+  color: white;
+  background-color: #2aa05f;
+}
+
+.Basket2 table{
+  width : 100%;
+}
+
+.Basket2 #footBask{
+  bottom: 0%;
+  position: absolute;
 }
 
 .Bask{
