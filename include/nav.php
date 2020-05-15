@@ -1,11 +1,38 @@
-<nav>
-	 <ul>	
-		<li><a href = "#">Welcome</a> </li>
+<?php
+if(isset($_SESSION['Username']))
+{
+    ?>
+    <nav>
+        <ul>	
+        <li><a href = "#">Welcome</a> </li>
         <li><a href = "Index.php">Universities List</a> </li>
         <li><a href = "Basket.php">My Baskets</a></li>		
         <div class = "IRight">		
-            <li><a href = "#">Sign In</a></li>	
-            <li><a href = "#">Sign Up</a></li>	
+            <li><a href = "MyProfil.php">My profil</a></li>	
+            <li><a href = "logout.php">Sign out</a></li>	
         </div>			
-	</ul> 
-</nav>
+    </ul> 
+    </nav>
+<?php
+}
+
+else
+{
+    ?>
+    <nav>
+        <ul>	
+        <li><a href = "#">Welcome</a> </li>
+        <li><a href = "Index.php">Universities List</a> </li>
+        <li><a href = "Basket.php">My Baskets</a></li>		
+        <div class = "IRight">		
+            <li><a href = "login.php">Sign in</a></li>	
+            <li><a href = "SignUp.php">Sign Up</a></li>	
+        </div>			
+    </ul> 
+    </nav>
+    <?php
+} 
+
+?>
+
+

@@ -88,7 +88,32 @@
                 <?php    
                 $idChoose=array(); //On réinitialise le tableau
                 ?>
-                <button class="myButton">Download Learning Agreement</button>
+                <form name="PreviewLA" method="post" action="LAPreview.php">
+                <?php 
+                    //Same here to get the preview of the LA
+                    $c =0;
+                    foreach($idChoose as $id)
+                    {
+                        echo '<input type="hidden" name="item'.$c.'" value="'.$id.'">';
+                        $c=$c+1;
+                    }
+                    echo '<input type="hidden" name="length" value="'.$c.'">';
+                    ?>
+                    <button id="DeleteBasket" class="myButton">Preview of the Learning Agreement (html version)</button>
+                </form>
+                <form name="PreviewLA" method="post" action="LACreation.php">
+                <?php 
+                    //Same here to get the preview of the LA
+                    $c =0;
+                    foreach($idChoose as $id)
+                    {
+                        echo '<input type="hidden" name="item'.$c.'" value="'.$id.'">';
+                        $c=$c+1;
+                    }
+                    echo '<input type="hidden" name="length" value="'.$c.'">';
+                    ?>
+                    <button id="DeleteBasket" class="myButton">Download the Learning Agreement</button>
+                </form>
                 <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                 <form name="DeleteBasket" method="post" onclick="return confirm('Are you sure to delete this Basket?')" action="DeleteBasket.php">
                     <?php 
@@ -137,6 +162,7 @@
                 </div>
                 <form name="university" method="post" action="EditBasket.php">
                     <?php 
+                    //to edit the form, we'll need of the id of each course
                     $c =0;
                     foreach($idChoose as $id)
                     {
@@ -148,7 +174,32 @@
                     <button id="EditBasket" class="myButton">Edit</button>
                 </form>
                 
-                <button class="myButton">Download Learning Agreement</button>
+                <form name="PreviewLA" method="post" action="LAPreview.php">
+                <?php 
+                    //Same here to get the preview of the LA
+                    $c =0;
+                    foreach($idChoose as $id)
+                    {
+                        echo '<input type="hidden" name="item'.$c.'" value="'.$id.'">';
+                        $c=$c+1;
+                    }
+                    echo '<input type="hidden" name="length" value="'.$c.'">';
+                    ?>
+                    <button id="DeleteBasket" class="myButton">Preview of the Learning Agreement (html version)</button>
+                </form>
+                <form name="PreviewLA" method="post" action="LACreation.php">
+                <?php 
+                    //Same here to get the preview of the LA
+                    $c =0;
+                    foreach($idChoose as $id)
+                    {
+                        echo '<input type="hidden" name="item'.$c.'" value="'.$id.'">';
+                        $c=$c+1;
+                    }
+                    echo '<input type="hidden" name="length" value="'.$c.'">';
+                    ?>
+                    <button class="myButton">Download the Learning Agreement</button>
+                </form>
                 <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                 <form name="DeleteBasket" method="post" onclick="return confirm('Are you sure to delete this Basket?')" action="DeleteBasket.php">
                     <?php 
