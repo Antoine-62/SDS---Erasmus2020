@@ -1,5 +1,5 @@
 <?php include("include/Head.php"); ?>
-
+<script src="Javascript/Login.js"></script>
 <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
 <h1> Connexion </h1> <br/>

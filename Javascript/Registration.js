@@ -80,8 +80,16 @@ $(function() {
                 url: $(form).attr('action'),
                 data: formData
             })
-            .done(function(response) {
-                alert(response);
+            .done(function(data) {
+                console.log(data);
+                var response = JSON.parse(data);
+                if(response['success'])
+                {
+                    window.location.href="Universities.php"
+                }
+                else{
+                    alert("Please, change your username, it had already been taken by someone else.")
+                }
             });
         }
         else{

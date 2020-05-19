@@ -48,6 +48,13 @@ while ($NumLA = $RetLA->fetch())
     <td><?php echo $data['Name'];?></td> 
     <td><?php echo $data['ECTS'];?></td>
     <td> 
+        <form name="Description" method="post" action="Description.php">  
+            <?php  echo '<input type="hidden" name="IdC" value="'.$data['IdC'].'">';  ?>
+            <?php  echo '<input type="hidden" name="IdF" value="'.$_SESSION['IdF'].'">';  ?>
+            <button class="myButton">Description</button>
+        </form>
+    </td>
+    <td> 
         <button class="myButton" onclick = "add(<?php echo $data['IdC'];?>)">Add to the basket</button>
     </td>
 
@@ -237,7 +244,7 @@ for($i=0; $i<$_POST['length']; $i++)
                 type: "POST",
                 data: { dataBasket: JSON.stringify( dataBasket ), LA: '<?php echo $LA?>' },
                 success: function(data) {
-                    if (data == "success") {
+                    if (data) {
                         alert("Your data have been updated");
                         document.location.href = "Basket.php";
                     } else {

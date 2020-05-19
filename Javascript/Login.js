@@ -56,10 +56,10 @@ $(function() {
                 data: formData
             })
             .done(function(response) {
-                alert(response);
-                if(response === "success")
+               // alert(response);
+                if(response)
                 {
-                    window.location.href="Index.php"
+                    window.location.href="Universities.php"
                 }
             });
         }

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include("include/Configuration.php");
 $req = $bdd->prepare('INSERT INTO user(Username, FirstName, Surname, DateOfBirth, Nationality, Sex, StudyCycle, FieldOfEducation, status, Email, pwd, Phone) VALUES (:username, :firstName, :surname, :DateOfBirth, :Nationality, :Sex, :StudyCycle, :FieldOfEducation, :Right, :Email, :pwd, :Phone)');
    
@@ -15,9 +16,10 @@ $Phone = $_POST['Phone'];
 $password = $_POST['Pwd'];
 $Rigth= $_POST['Rigth'];
 
-echo $FirstName ."-".$LastName."-".$Username."-".$Nationality."-".$_POST['BirthDate']."-".$Sex."-".$StudyCycle."-".$FieldOfEducation."-".$Email."-".$Phone."-".$password."-".$Rigth;
+//echo $FirstName ."-".$LastName."-".$Username."-".$Nationality."-".$_POST['BirthDate']."-".$Sex."-".$StudyCycle."-".$FieldOfEducation."-".$Email."-".$Phone."-".$password."-".$Rigth;
 
 $password_encrypted = password_hash($password, PASSWORD_DEFAULT);
+
 
 if(!
     $req->execute(array(
@@ -35,11 +37,24 @@ if(!
         'Phone'=> $Phone,
     )))
 {
-    print_r($req->errorInfo());
+   // print_r($req->errorInfo());
+    $response['error'] = "error";
+    exit(json_encode($response));
 }
 
-    
-        echo "success";
+        $_SESSION['Username']=$_POST['Username']; 
+        $_SESSION['status']=$_POST['Rigth']; 
+        //header('Location:Universities.php');
+        //echo "success";
+        $response['success'] = "success";
+        exit(json_encode($response));
+
+die();
+
+
+
+       // echo $_SESSION['Username'];
+        
     
 
 

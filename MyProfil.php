@@ -11,8 +11,8 @@ $User = $UserData->fetch()
 	<ul>
 		<li> First Name : <?php echo $User['FirstName']; ?> </li>
 		<li> Last Name : <?php echo $User['Surname']; ?> </li>
-		<li> Nationality : <?php echo $User['DateOfBirth']; ?></li>
-		<li> Birthdate : <?php echo $User['Nationality']; ?></li>
+		<li> Nationality : <?php echo $User['Nationality']; ?></li>
+		<li> Birthdate : <?php echo $User['DateOfBirth']; ?></li>
 		<li> Gender : <?php echo $User['Sex']; ?></li>
         <li> Study cycle : <?php echo $User['StudyCycle']; ?></li>
 		<li> Field of education : <?php echo $User['FieldOfEducation']; ?></li>
@@ -22,4 +22,13 @@ $User = $UserData->fetch()
     <form name="EditMyProfil" method="post" action="EditMyProfil.php">
         <button class="myButton">Edit my profil</button>
     </form>
+
+	<?php if( $_SESSION['status'] == 3)
+	{ ?>
+		<h2>Administrator table :</h2>
+		<h3>Users List</h3> 
+		<form name="EditMyProfil" method="post" action="UserList.php">
+        <button class="myButton">Consult the List</button>
+    </form>
+	<?php } ?>
 </div>

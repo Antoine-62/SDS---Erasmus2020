@@ -118,6 +118,24 @@ $cellCol4SpanTop = array(
 	'borderRightColor'=>'black',
 );
 
+$cellCol6SpanTop= array(
+	'gridSpan' => 6,
+	'align' =>'center',
+	'borderTopSize'=>1 ,
+	'borderTopColor' =>'black',
+	'borderRightSize'=>1,
+	'borderRightColor'=>'black',
+);
+
+$cellCol5SpanTop= array(
+	'gridSpan' => 5,
+	'align' =>'center',
+	'borderTopSize'=>1 ,
+	'borderTopColor' =>'black',
+	'borderRightSize'=>1,
+	'borderRightColor'=>'black',
+);
+
 $cellCol4Span = array(
 	'gridSpan' => 4,
 	'align' =>'center',
@@ -135,6 +153,13 @@ $styleCellT2LTop = array(
 $styleCellT2L = array(
 	'borderLeftSize'=>1,
 	'borderLeftColor' =>'black',
+);
+
+$styleCellT2LBottom = array(
+	'borderLeftSize'=>1,
+	'borderLeftColor' =>'black',
+	'borderBottomSize' =>1,
+	'borderBottomColor'=>'black' 
 );
 
 
@@ -281,8 +306,8 @@ $RetUser = $bdd->query("select * from user where Username = '".$_SESSION['Userna
 
 $table->addRow();
 $table->addCell(null, $cellRowContinue)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
-$table->addCell(1800, $styleCell)->addText( $FirstName,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
-$table->addCell(2000, $styleCell)->addText($LastName,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table->addCell(1800, $styleCell)->addText( $LastName,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table->addCell(2000, $styleCell)->addText($FirstName,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
 $table->addCell(2600, $styleCell)->addText($BirthDate,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
 $table->addCell(1400, $styleCell)->addText($Nationality,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
 $table->addCell(1400, $styleCell)->addText($Sex,$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
@@ -381,17 +406,18 @@ $total = 0;
 for($i=0; $i<$_POST['length']; $i++)
 {
 	$table2->addRow();
-    $RetCourse = $bdd->query("select Name, ECTS, IdC from course where IdC in(select IdC from choose where IdChoose like '".$_POST['item'.$i]."' )");
+    $RetCourse = $bdd->query("select Name, ECTS, Semester, IdC from course where IdC in(select IdC from choose where IdChoose like '".$_POST['item'.$i]."' )");
     while ($Course = $RetCourse->fetch())
     {
          $name = $Course["Name"];
-         $ects = $Course["ECTS"];
+		 $ects = $Course["ECTS"];
+		 $semester = $Course["Semester"];
          $total = $total + $ects;
 	}
 	$table2->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 	$table2->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 	$table2->addCell(5000, $styleCell)->addText($name,$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
-	$table2->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+	$table2->addCell(2000, $styleCell)->addText($semester,$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 	$table2->addCell(4000, $styleCell)->addText($ects,$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 }
 $table2->addRow();
@@ -510,6 +536,168 @@ $table5->addCell(2000, $styleCell)->addText("Erasmus Coordinator",$TfontStyle,ar
 $table5->addCell(1500, $styleCell)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
 $table5->addCell(2500, $styleCell)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
 
+$section->addText(
+    'During the mobility', $TitlefontStyle,array('align' => 'center')
+);
+
+$table6 = $section->addTable([$tableStyle]);
+$table6->addRow();
+$table6->addCell(1400, $styleCellT2LTop)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(13000, $cellCol6SpanTop)->addText('Exceptional changes to Table A',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addRow();
+$table6->addCell(1400, $styleCellT2L)->addText('Table A2 <w:br/> During the mobility',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2000, $styleCell)->addText('Component code <w:br/> (if any)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(4000, $styleCell)->addText('Component title at the Receiving Institution <w:br/> (as indicated in the course catalogue ) ',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('Deleted component [tick if applicable]',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('Added component [tick if applicable]',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2500, $styleCell)->addText('Reason for change',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('Number of ECTS credits (or equivalent)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$table6->addRow();
+$table6->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addRow();
+$table6->addCell(1400, $styleCellT2LBottom)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(2500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table6->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$section->addText(
+    ''
+);
+
+$table7 = $section->addTable([$tableStyle]);
+$table7->addRow();
+$table7->addCell(1400, $styleCellT2LTop)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(13000, $cellCol5SpanTop)->addText('Exceptional changes to Table B (if applicable)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addRow();
+$table7->addCell(1400, $styleCellT2L)->addText('Table B2 <w:br/> During the mobility',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(2000, $styleCell)->addText('Component code <w:br/> (if any)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('Component title at the Sending Institution <w:br/> (as indicated in the course catalogue ) ',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('Deleted component [tick if applicable]',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('Added component [tick if applicable]',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('Number of ECTS credits (or equivalent)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$table7->addRow();
+$table7->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addRow();
+$table7->addCell(1400, $styleCellT2LBottom)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table7->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$section->addText(
+    'After the mobility', $TitlefontStyle,array('align' => 'center')
+);
+
+$table8 = $section->addTable([$tableStyle]);
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2LTop)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(13000, $cellCol5SpanTop)->addText('Transcript of Records at the Receiving Institution <w:br/> Start and end dates of the study period: from [day/month/year] ……………. to [day/month/year] …………….',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2L)->addText('Table C <w:br/> After the mobility',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('Component code <w:br/> (if any)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('Component title at the Receiving Institution <w:br/> (as indicated in the course catalogue ) ',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('Was the component successfully completed by the student? [Yes/No]',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('Number of ECTS credits (or equivalent)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('Grades received at the Receiving Institution',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addRow();
+$table8->addCell(1400, $styleCellT2LBottom)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(1500, $styleCell)->addText('Total :',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table8->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$section->addText(
+    ''
+);
+
+$table9 = $section->addTable([$tableStyle]);
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2LTop)->addText('',$TfontStyle,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(13000, $cellCol4SpanTop)->addText('Transcript of Records and Recognition at the Sending Institution <w:br/> Start and end dates of the study period: from [day/month/year] ……………. to [day/month/year] …………….',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2L)->addText('Table D <w:br/> After the mobility',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('Component code <w:br/> (if any)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('Title of recognised component at the Sending Institution  <w:br/> (as indicated in the course catalogue ) ',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('Number of ECTS credits (or equivalent) recognised',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('Grades registered at the Sending Institution (if applicable)',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2L)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addRow();
+$table9->addCell(1400, $styleCellT2LBottom)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(3000, $styleCell)->addText('Total :',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 // Saving the document as OOXML file...
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 ob_clean();

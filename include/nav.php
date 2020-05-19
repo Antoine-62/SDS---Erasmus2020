@@ -4,8 +4,7 @@ if(isset($_SESSION['Username']))
     ?>
     <nav>
         <ul>	
-        <li><a href = "#">Welcome</a> </li>
-        <li><a href = "Index.php">Universities List</a> </li>
+        <li><a href = "Universities.php">Universities List</a> </li>
         <li><a href = "Basket.php">My Baskets</a></li>		
         <div class = "IRight">		
             <li><a href = "MyProfil.php">My profil</a></li>	
@@ -21,9 +20,7 @@ else
     ?>
     <nav>
         <ul>	
-        <li><a href = "#">Welcome</a> </li>
-        <li><a href = "Index.php">Universities List</a> </li>
-        <li><a href = "Basket.php">My Baskets</a></li>		
+        <li><a href = "Index.php">Welcome</a> </li>
         <div class = "IRight">		
             <li><a href = "login.php">Sign in</a></li>	
             <li><a href = "SignUp.php">Sign Up</a></li>	

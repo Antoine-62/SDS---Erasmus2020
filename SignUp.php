@@ -24,7 +24,7 @@
                 <label>Email : </label><input type="email" name="Email" id="Email" required="Email"> <br/><br/>
                 <label>Phone number :  </label><input type="text" name="Phone" id="Phone" required="Phone"/><br/><br/>
                 <label> Password : </label><input type="password" name="Pwd" id="Pwd" required="Password"/>
-                <p>The password must contains at least 6 charaters, including at least an uppercase, lower case and a number</p><br/> 
+                <p>The password must contains at least 6 charaters, including letters and numbers</p><br/> 
                 <label for="cmdp">Please, confirm your password : </label><input type="password" name="Cpwd" id="Cpwd" required="Confirm your password"/>><br/><br/>
                             
                 <input type="submit" value="Sign up!"/>

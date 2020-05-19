@@ -1,68 +1,88 @@
-<?php include("include/Head.php"); ?>
+<?php 
+ include("include/Head.php"); ?>
 <div id="container">
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
     <?php 
         include("include/Configuration.php");
-        $Univers = $bdd->query('SELECT * FROM university where IdUnivers in(select IdUnivers from faculty where IdF = "'.$_POST['faculty'].'")');
-        
-        while ($Univer = $Univers->fetch())
+        if(isset($_POST['faculty']))
         {
-            $nameUniv = $Univer['Name'];
-        } 
-        $Facs =  $bdd->query('SELECT * FROM faculty where IdF = "'.$_POST['faculty'].'"');
-        while ($Fac = $Facs->fetch())
+            $_SESSION['IdF']=$_POST['faculty'];
+        }
+        if(isset($_SESSION['IdF']))
         {
-            $nameFac = $Fac['Name'];
-        } 
-        ?>
-        <div class="ListwB">
-            <h1>University : <?php echo $nameUniv;?></h1>
-            <h1>Faculty : <?php echo $nameFac;?></h1>
-            <h1>Choose your courses</h1>
-            <table>
-                <tr>
-                    <th>Course</th>
-                    <th>Ects</th>                
-                </tr>
-                <?php 
-                    include("include/Configuration.php");
-			    	$reponse = $bdd->query('SELECT * FROM course where IdF = "'.$_POST['faculty'].'"'); 
-			    	while ($data = $reponse->fetch())  
-				    {  
-			    ?>
-					
-                <tr id = "<?php echo $data['IdC'];?>">
-                    <td><?php echo $data['Name'];?></td> 
-                    <td><?php echo $data['ECTS'];?></td>
-                    <td> 
-                        <button class="myButton" onclick = "add(<?php echo $data['IdC'];?>)">Add to the basket</button>
-                    </td>
+            $Univers = $bdd->query('SELECT * FROM university where IdUnivers in(select IdUnivers from faculty where IdF = "'.$_SESSION['IdF'].'")');
+            
+            while ($Univer = $Univers->fetch())
+            {
+                $nameUniv = $Univer['Name'];
+            } 
+            $Facs =  $bdd->query('SELECT * FROM faculty where IdF = "'.$_SESSION['IdF'].'"');
+            while ($Fac = $Facs->fetch())
+            {
+                $nameFac = $Fac['Name'];
+            } 
+            ?>
+            <div class="ListwB">
+                <h1>University : <?php echo $nameUniv;?></h1>
+                <h1>Faculty : <?php echo $nameFac;?></h1>
+                <h1>Choose your courses</h1>
+                <table>
+                    <tr>
+                        <th>Course</th>
+                        <th>Ects</th>                
+                    </tr>
+                    <?php 
+                        include("include/Configuration.php");
+                        $reponse = $bdd->query('SELECT * FROM course where IdF = "'.$_SESSION['IdF'].'"'); 
+                        while ($data = $reponse->fetch())  
+                        {  
+                    ?>
+                        
+                    <tr id = "<?php echo $data['IdC'];?>">
+                        <td><?php echo $data['Name'];?></td> 
+                        <td><?php echo $data['ECTS'];?></td>
+                        <td> 
+                            <form name="Description" method="post" action="Description.php">  
+                                <?php  echo '<input type="hidden" name="IdC" value="'.$data['IdC'].'">';  ?>
+                                <?php  echo '<input type="hidden" name="IdF" value="'.$_SESSION['IdF'].'">';  ?>
+                                <button class="myButton">Description</button>
+                            </form>
+                        </td>
+                        <td> 
+                            <button class="myButton" onclick = "add(<?php echo $data['IdC'];?>)">Add to the basket</button>
+                        </td>
+                    
+                    </tr>
+                    
+                    
+                    <?php
                 
-                </tr>
-				
-                
-				<?php
-               
-				    }
-			    ?>
-            </table>
-        </div>
-        <div class="Basket">
-            <div class="Bask">
-                <h1>Here your basket</h1>
-                    <table id='tabBasket'>
-                        <tr>
-                            <th>Course</th>
-                            <th>Ects</th>  
-                            <th>Remove</th>              
-                        </tr>
-                    </table>
+                        }
+                    ?>
+                </table>
             </div>
-            <button id="SaveBasket" class="myButton">Save</button><button class="myButton">Download Learning Agreement</button>
-            <p>ECTS total : <span id="total"></span></p>
-    
-        </div>
+            <div class="Basket">
+                <div class="Bask">
+                    <h1>Here your basket</h1>
+                        <table id='tabBasket'>
+                            <tr>
+                                <th>Course</th>
+                                <th>Ects</th>  
+                                <th>Remove</th>              
+                            </tr>
+                        </table>
+                </div>
+                <button id="SaveBasket" class="myButton">Save</button><button class="myButton">Download Learning Agreement</button>
+                <p>ECTS total : <span id="total"></span></p>
+        
+            </div>
+        <?php
+        }
+        else{
+            echo "You didn't select any Faculties.";
+        }
+        ?>
 
         <script type="text/javascript">
         let saveBasket = document.querySelector("#SaveBasket");
@@ -176,7 +196,7 @@
                 data: { dataBasket: JSON.stringify( dataBasket ) },
                 success: function(data) {
                    
-                    if (data == "success") {
+                    if (data) {
                         alert("Your basket have been registered - You'll be directed to your basket section");
                         document.location.href = "Basket.php";
                     } else {

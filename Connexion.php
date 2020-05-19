@@ -22,8 +22,9 @@ else
 {
     if ($isPasswordCorrect) {
         $_SESSION['Username']=$_POST['Username']; //Permet de récupérer l'identifiant de l'utilisateur pour sa session
+        $_SESSION['status']=$resultat['status'];
        // echo $_SESSION['Username'];
-        header('Location:Index.php'); //Redirige vers l'accueil
+       // header('Location:Universities.php'); //Redirige vers l'accueil
        echo 'success';
        die();
     }
