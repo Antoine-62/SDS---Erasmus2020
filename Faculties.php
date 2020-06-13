@@ -10,7 +10,7 @@
     }
 	?>
 <div class="List">
-    <h1>University : <?php echo $univName;?></h1>
+    <h1><?php echo $univName;?></h1>
     <h1>Choose your faculties</h1>
     <table>
                 <tr>

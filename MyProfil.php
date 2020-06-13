@@ -22,13 +22,5 @@ $User = $UserData->fetch()
     <form name="EditMyProfil" method="post" action="EditMyProfil.php">
         <button class="myButton">Edit my profil</button>
     </form>
-
-	<?php if( $_SESSION['status'] == 3)
-	{ ?>
-		<h2>Administrator table :</h2>
-		<h3>Users List</h3> 
-		<form name="EditMyProfil" method="post" action="UserList.php">
-        <button class="myButton">Consult the List</button>
-    </form>
-	<?php } ?>
 </div>
+<?php include("include/footer.php"); ?>

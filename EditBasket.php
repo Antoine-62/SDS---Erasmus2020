@@ -109,7 +109,7 @@ for($i=0; $i<$_POST['length']; $i++)
 
                     </table>
             </div>
-            <button id="SaveBasket" class="myButton">Edit</button><button class="myButton">Download Learning Agreement</button>
+            <button id="SaveBasket" class="myButton">Edit</button>
             <p>ECTS total : <span id="total"><?php echo $total;?></span></p>
     
         </div>
@@ -258,6 +258,7 @@ for($i=0; $i<$_POST['length']; $i++)
 
             </script>
     </div>
+<?php include("include/footer.php"); ?>
 
 
 					

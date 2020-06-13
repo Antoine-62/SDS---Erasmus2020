@@ -1,9 +1,11 @@
 <?php 
  include("include/Head.php"); ?>
-<div id="container">
-    <?php include("include/Header.php");
+    <?php 
+    include("include/Header.php");
     include("include/nav.php");
     ?>
+
+<div id="List">
     <h1>User List</h1>
     <table>
         <tr>
@@ -46,3 +48,6 @@
             <?php
         }
         ?>
+        </table>
+</div>
+<?php include("include/footer.php"); ?>

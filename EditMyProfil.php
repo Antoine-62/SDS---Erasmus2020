@@ -25,3 +25,4 @@ $User = $UserData->fetch();
         <button class="myButton">Edit my profil</button>
     </form>
 </div>
+<?php include("include/footer.php"); ?>

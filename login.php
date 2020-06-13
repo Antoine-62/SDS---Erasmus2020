@@ -8,3 +8,4 @@
 		Password : <input type="password" id="password" name="password" required="Password"/><br/><br/>
         <input type="submit" name="valider" value="Se connecter"/>
 </form>
+<?php include("include/footer.php"); ?>

@@ -1,4 +1,4 @@
-body {
+html,body {
     height: 100%;
     font-size: 16px;
     margin: 0px;
@@ -159,16 +159,26 @@ nav ul {
     overflow: scroll;
 }
 
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.footer,
+.push {
+  height: 50px;
+}
+
 footer{
     background-color: #333;
     color: white;
-    position: absolute;
+    /*position: absolute;
     bottom: 0%;
-    width: 100%;
+    width: 100%;*/
     text-align: center;
 }
 
-#container{
+#containerl{
     position: relative;
-    height: 30%;
+    height: 140%;
 }

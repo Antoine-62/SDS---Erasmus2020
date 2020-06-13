@@ -25,3 +25,4 @@
     <h2>And it's free ! Join us : <a href="SignUp.php">Sign up!</a></h2>
 
 </div>
+<?php include("include/footer.php"); ?>

@@ -1,6 +1,6 @@
 <?php 
  include("include/Head.php"); ?>
-<div id="container">
+<div id="containerl">
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
     <?php 
@@ -73,7 +73,7 @@
                             </tr>
                         </table>
                 </div>
-                <button id="SaveBasket" class="myButton">Save</button><button class="myButton">Download Learning Agreement</button>
+                <button id="SaveBasket" class="myButton">Save</button>
                 <p>ECTS total : <span id="total"></span></p>
         
             </div>
@@ -211,3 +211,4 @@
 
         </script>
     </div>
+<?php include("include/footer.php"); ?>
