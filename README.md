@@ -50,9 +50,6 @@ Then, run wamp64.
 #### With phpMyAdmin
 Go to phpMyAdmin, then create a new database called **cela**, then import the script *cela.sql*, located in the script directory of the project. It will create the tables of our applications with some rows.
 
-#### With mySql terminal
-Open your mySql terminal, then execute the script *cela.sql*, located in the script directory of the project (The command is "source pathOfTheProject/cela2.sql";). By executing this script, it'll create a new database, cela, and some tables in this databse with some data. You can check if the table has been created by executing the following query : *select * from course*. It should display a lot of course.
-
 ### Visit the website
 Now that we have our project in the local web server and created our database, we can run visit our application on the following url :
 ```
