@@ -8,8 +8,9 @@ $User = $UserData->fetch();
 
 ?>
 <div id="Profil">
+<h1 class="whereFrom">Edit my profile</h1>
+<div class="profile">
     <form name="saveEditProfil" method="post" action="saveEditProfil.php">
-        <h2> Edit my profil</h2>
         <label>First Name : </label><input type="text" name="FirstName" id="FirstName" value=<?php echo $User['FirstName']; ?> />
         <label>Last Name : </label><input type="text" name="LastName" id="LastName" value=<?php echo $User['Surname']; ?> /><br/><br/>
         <label>Nationality : </label><input type="text" name="Nationality" id="Nationality" value=<?php echo $User['Nationality']; ?> /> <br/><br/>
@@ -24,5 +25,6 @@ $User = $UserData->fetch();
         <label>Phone number :  </label><input type="text" name="Phone" id="Phone" value=<?php echo $User['Phone']; ?> /><br/><br/>             
         <button class="myButton">Edit my profil</button>
     </form>
+</div>
 </div>
 <?php include("include/footer.php"); ?>

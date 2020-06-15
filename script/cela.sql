@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Jun 13, 2020 at 10:13 PM
+-- Generation Time: Jun 15, 2020 at 09:55 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `choose` (
   `IdU` bigint(20) NOT NULL,
   `IdC` bigint(20) NOT NULL,
   PRIMARY KEY (`IdChoose`)
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=189 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `choose`
@@ -47,7 +47,11 @@ INSERT INTO `choose` (`IdChoose`, `NumberLA`, `IdU`, `IdC`) VALUES
 (163, 2, 6, 3),
 (174, 3, 6, 1),
 (175, 3, 6, 2),
-(176, 3, 6, 3);
+(176, 3, 6, 3),
+(185, 1, 50, 22),
+(186, 1, 50, 23),
+(187, 1, 50, 24),
+(188, 1, 50, 25);
 
 -- --------------------------------------------------------
 
@@ -64,19 +68,15 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `IdU` int(11) NOT NULL,
   `IdC` int(11) NOT NULL,
   PRIMARY KEY (`idCom`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`idCom`, `comment`, `PublicationDate`, `PublicationTime`, `IdU`, `IdC`) VALUES
-(29, 'fdvgd', '2020/06/13', '08:14:35pm', 6, 35),
-(34, '            mlkjhgf', '2020/06/14', '12:08:32am', 6, 35),
-(33, '            lkjhgf\r\n', '2020/06/14', '12:08:26am', 6, 35),
-(32, '            lkjh', '2020/06/14', '12:08:18am', 6, 35),
-(31, '            coco', '2020/06/13', '11:06:27pm', 6, 35),
-(30, '            kjhgf', '2020/06/13', '10:19:32pm', 6, 35);
+(35, 'Too cool! This course was amazing such as the teacher!', '2020/06/14', '01:47:19am', 6, 1),
+(31, '            coco', '2020/06/13', '11:06:27pm', 6, 35);
 
 -- --------------------------------------------------------
 
@@ -182,14 +182,14 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 --
 
 INSERT INTO `faculty` (`IdF`, `Name`, `Coordinator`, `Email`, `Phone`, `IdUnivers`) VALUES
-(1, 'Faculty of Computing and Telecommunications', 'blabla', 'bla@bla.bla', '0123456789', 7),
-(2, 'Faculty of Architecture', 'blabla', 'bla@bla.bla', '0123456789', 7),
-(3, 'Faculty Of Chemical Technology', 'blabla', 'bla@bla.bla', '0123456789', 7),
-(4, 'Faculty of Civil and transport engineering', 'blabla', 'bla@bla.bla', '0123456789', 7),
-(5, 'Faculty of Architecture', 'blabla', 'bla@bla.bla', '0123456789', 5),
-(6, 'Faculty of Control, robotics and Electrical Engineering', 'blabla', 'bla@bla.bla', '0123456789', 5),
-(7, 'Bioscience Engineering', 'blabla', 'bla@bla.bla', '0123456789', 8),
-(8, 'Textile Engineering', 'blabla', 'bla@bla.bla', '0123456789', 8);
+(1, 'Faculty of Computing and Telecommunications', 'Marek WOJCIECHOWSKI', 'marek.wojciechowski@put.poznan.pl', '9182734056', 7),
+(2, 'Faculty of Architecture', 'Adam SINIECKI ', 'adam.siniecki@put.poznan.pl', '3212457896', 7),
+(3, 'Faculty Of Chemical Technology', 'Katarzyna RZESZUT', 'katarzyna.rzeszut@put.poznan.pl', '7785412369', 7),
+(4, 'Faculty of Civil and transport engineering', 'Ewelina JANKOWSKA', 'ewelina.jankowska@put.poznan.pl', '2541201423', 7),
+(5, 'Faculty of Architecture', 'Izabela PIKLIKIEWICZKĘSICKA', 'izabela.piklikiewicz-kesicka@put.poznan.pl', '8814257563', 5),
+(6, 'Faculty of Control, robotics and Electrical Engineering', 'Ewa Chrzumnicka', 'ewa.chrzumnicka@put.poznan.pl', '0123456789', 5),
+(7, 'Bioscience Engineering', 'Benedicte Desmedt', 'benedicte.desmedt@ugent.be', '1474514896', 8),
+(8, 'Textile Engineering', 'Greet Naessens', 'greet.naessens@ugent.be', '4741549663', 8);
 
 -- --------------------------------------------------------
 
@@ -215,10 +215,10 @@ CREATE TABLE IF NOT EXISTS `university` (
 --
 
 INSERT INTO `university` (`IdUnivers`, `Name`, `ErasmusCode`, `Address`, `Country`, `ContactName`, `Email`, `Phone`) VALUES
-(5, 'Cracow University of Technology', 'Cra285', '24, warszawa street 31-155 Cracow, Poland', 'Poland', 'blabla', 'erasmus@pk.edu.pl', '+48126283044'),
-(7, 'Poznan University of Technology', 'poz302', 'Pl. M. Sklodowskiej-Curie 5,60-965 Poznan, Poland', 'Poland', 'Poland', 'study@put.poznan.pl', '+48616653544'),
-(8, 'Ghent University', 'Ghe245', 'Sint-Pietersnieuwstraat 33 9000, Ghent, Flanders, Belgium', 'Belgium', 'blabla', 'guide@UGent.be', '+32093310101'),
-(9, 'Charles university', 'bla', 'Charles University, Ovocný trh 560/5, Prague 1,116 36, Czech Republic\r\n', 'Czech', 'Antoine The great', 'erasmus@ruk.cuni.cz', '+420224491710');
+(5, 'Cracow University of Technology', 'Cra285', '24, warszawa street 31-155 Cracow, Poland', 'Poland', 'Izabela PIKLIKIEWICZKĘSICKA', 'erasmus@pk.edu.pl', '+48126283044'),
+(7, 'Poznan University of Technology', 'poz302', 'Pl. M. Sklodowskiej-Curie 5,60-965 Poznan, Poland', 'Poland', 'Marta Lipinska', 'study@put.poznan.pl', '+48616653544'),
+(8, 'Ghent University', 'Ghe245', 'Sint-Pietersnieuwstraat 33 9000, Ghent, Flanders, Belgium', 'Belgium', 'Benedicte Desmedt', 'guide@UGent.be', '+32093310101'),
+(9, 'Charles university', 'Pra127', 'Charles University, Ovocný trh 560/5, Prague 1,116 36, Czech Republic\r\n', 'Czech', 'Eva Charouzdova', 'erasmus@ruk.cuni.cz', '+420224491710');
 
 -- --------------------------------------------------------
 
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `IdUnivers` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`IdU`),
   UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -255,13 +255,14 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`IdU`, `Username`, `FirstName`, `Surname`, `DateOfBirth`, `Nationality`, `Sex`, `StudyCycle`, `FieldOfEducation`, `status`, `Email`, `pwd`, `Phone`, `DateArrival`, `DateDeparture`, `IdUnivers`) VALUES
 (3, 'test', 'test', 'test', '2020-05-03', 'test', 'M', 'test', 'test', '1', 'test@test.test', 'toto12', '0123456789', NULL, NULL, NULL),
 (5, 'qesrfr', 'dfsdghfd', 'sfrdf', '2020-05-03', 'frzqdsfffss', 'F', 'Master', 'frzqdsfffss', '1', 'ezre@ef.dg', '$2y$10$keh1WJenC15Sk/yVer95SeZEZ0NgDp2lQZCNwhs.IFdBqWRKq19BC', '0123456789', NULL, NULL, NULL),
-(6, 'Antoine123', 'Antoine', 'Landrieu', '1998-03-17', 'French', 'M', 'Master', 'Frenchi', '3', 'antr@sdgd.fd', '$2y$10$C8MeCwgwJD9lVgBWNocDP.cpvHUlgMdVdWIvFGzDu7/7A8z/Y2nD6', '0123456789', NULL, NULL, NULL),
+(6, 'Antoine123', 'Antoine', 'Landrieu', '1998-03-17', 'French', 'M', 'Master', 'French', '3', 'antr@sdgd.fd', '$2y$10$C8MeCwgwJD9lVgBWNocDP.cpvHUlgMdVdWIvFGzDu7/7A8z/Y2nD6', '0123456789', NULL, NULL, NULL),
 (9, 'test222', 'test2', 'test2', '2020-04-26', 'English', 'M', 'Bachelor', 'fds2', '1', 'anto@gds.com', '$2y$10$bLzlUn8Y5mFmxwmxVXWCcOHdbQG86Y.gWaab1.aIoWEbCSiTowO56', '0123456789', NULL, NULL, NULL),
 (10, 'testtest', 'testtest', 'testtest', '4567-12-03', 'testtest', 'M', 'Bachelor', 'testtest', '1', 'testtest@testtes.tes', '$2y$10$XCkGG2qtNskjaarsotvvb.N1kqGhW55SFmFbviuyDSbrCnIxCmkZe', '0123456789', NULL, NULL, NULL),
 (15, 'testtest22', 'testtest', 'testtest', '4567-12-03', 'testtest', 'M', 'Bachelor', 'testtest', '1', 'testtest@testtes.tes', '$2y$10$lSuOptJQjoUL4q8qut4lSu7iU4QHW/Un5uxK5hVwdNWDPyEH4i6fC', '0123456789', NULL, NULL, NULL),
 (17, 'test12346', 'rtegry', 'rsetr', '1234-12-03', 'french', 'M', 'Bachelor', 'sfdsgf', '1', 'fsd@qdsfd.ds', '$2y$10$HphPRvT471u7xx3fxUF4x.j3BM.gmAc9bby9WVOJgmKEEvQ9cA.dG', '0123456789', NULL, NULL, NULL),
 (20, 'sqdf', 'sdftfg', 'swdfdg', '2020-04-26', 'qsdfdg', 'M', 'Bachelor', 'dsfr', '1', 'sfrdg@sdf0ds.sd', '$2y$10$U.EqHXk6nkw8ub6rFZdw5Oc.8DKF217xjujyxmaEUCrLWboBKqR2y', '0123456789', NULL, NULL, NULL),
-(49, 'Antoine62', 'Antoine', 'Landrieu', '1998-12-03', 'French', 'M', 'Master', 'French', '1', 'antoine@gmail.com', '$2y$10$gwvDCQuk2Xib.3eeER7pFesxakIjTKolYAiJHBINnrjNyRfkphxFu', '0123456789', NULL, NULL, NULL);
+(49, 'Antoine62', 'Antoine', 'Landrieu', '1998-12-03', 'French', 'M', 'Master', 'French', '1', 'antoine@gmail.com', '$2y$10$gwvDCQuk2Xib.3eeER7pFesxakIjTKolYAiJHBINnrjNyRfkphxFu', '0123456789', NULL, NULL, NULL),
+(50, 'lastTest', 'lest', 'test', '1458-12-12', 'gfd', 'M', 'Bachelor', 'dfgfg', '1', 'fdvvf@fds.ds', '$2y$10$U/6/YTJ0NkfEibNH3ruNWObOevxWbdqnIpLWEWhedRp9Bv7f6A5c.', '0123456789', NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

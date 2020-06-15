@@ -5,8 +5,9 @@
     include("include/nav.php");
     ?>
 
-<div id="List">
-    <h1>User List</h1>
+<div>
+<h1 class="whereFrom">User List</h1>
+<div class="List">
     <table>
         <tr>
             <th>Username</th>
@@ -49,5 +50,6 @@
         }
         ?>
         </table>
+</div>
 </div>
 <?php include("include/footer.php"); ?>

@@ -11,7 +11,7 @@ if(isset($_SESSION['Username']))
             { ?>
                 <li><a href = "UserList.php">Users List</a></li>
             <?php } ?>		
-            <li><a href = "MyProfil.php">My profil</a></li>	
+            <li><a href = "MyProfil.php">My profile</a></li>	
             <li><a href = "logout.php">Sign out</a></li>	
         </div>			
     </ul> 

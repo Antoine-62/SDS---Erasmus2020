@@ -1,7 +1,8 @@
 <?php include("include/Head.php"); ?>
-<div id="container">
-    <?php include("include/Header.php"); ?>
-    <?php include("include/nav.php"); ?>
+
+<div id="containerl">
+<?php include("include/Header.php"); ?>
+<?php include("include/nav.php"); ?>
     <?php
 
     include("include/Configuration.php");
@@ -18,10 +19,8 @@
              $nameU = $Univer["Name"];
         }
         ?>
+         <h1 class="whereFrom"><?php echo $nameU;?> - <?php echo $nameF;?> - Choose your courses</h1>
         <div class="ListwB">
-        <h1>University : <?php echo $nameU; ?></h1>
-        <h1>Faculty : <?php echo $nameF; ?></h1>
-            <h1>Choose your courses</h1>
             <table>
                 <tr>
                     <th>Course</th>
@@ -48,9 +47,9 @@ while ($NumLA = $RetLA->fetch())
     <td><?php echo $data['Name'];?></td> 
     <td><?php echo $data['ECTS'];?></td>
     <td> 
-        <form name="Description" method="post" action="Description.php">  
+        <form name="Description" method="post" action="Description2.php">  
             <?php  echo '<input type="hidden" name="IdC" value="'.$data['IdC'].'">';  ?>
-            <?php  echo '<input type="hidden" name="IdF" value="'.$_SESSION['IdF'].'">';  ?>
+            <?php  echo '<input type="hidden" name="IdF" value="'.$IdF.'">';  ?>
             <button class="myButton">Description</button>
         </form>
     </td>
@@ -113,7 +112,7 @@ for($i=0; $i<$_POST['length']; $i++)
             <p>ECTS total : <span id="total"><?php echo $total;?></span></p>
     
         </div>
-
+</div>
 
         <script type="text/javascript">
         let saveBasket = document.querySelector("#SaveBasket");
@@ -257,7 +256,6 @@ for($i=0; $i<$_POST['length']; $i++)
 
 
             </script>
-    </div>
 <?php include("include/footer.php"); ?>
 
 

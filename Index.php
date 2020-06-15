@@ -1,9 +1,8 @@
 <?php include("include/Head.php"); ?>
 <?php include("include/Header.php"); ?>
 <?php include("include/nav.php"); ?>
-
+<h1 class="whereFrom">What is CELA ?</h1>
 <div class="List">
-    <h1>What is CELA ?</h1>
     <h2>An application to help Erasmus Students</h2>
     <h3>CELA is an application which help you to create your Learning Agreement</h3>
     <p>When students are making their Learning, they have some questions :</p>

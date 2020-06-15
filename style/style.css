@@ -2,6 +2,7 @@ html,body {
     height: 100%;
     font-size: 16px;
     margin: 0px;
+    background-color: #f6f6f6;
   }
 
 nav ul {
@@ -9,7 +10,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #2F4F4F;
   }
   nav ul li {
     float: left;
@@ -31,7 +32,12 @@ nav ul {
   
   .List{
     width: 90%;
-    margin: 2% 5%;
+    margin: 4% 3%;
+    padding:2%;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666666;
   }
 
   .List h1{
@@ -44,40 +50,73 @@ nav ul {
   }
 
  .List td {
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     padding: 2% 0%;
   }
   
+  .whereFrom{
+    background-color: #4682B4;
+    color: #f6f6f6;
+    text-align: center;
+    padding: 1%;
+    margin: 0%;
+  }
 
-  .myButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
+.myButton {
+box-shadow:inset 0px 1px 0px 0px #cf866c;
+	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color:#d0451b;
+	border-radius:3px;
+	border:1px solid #942911;
 	display:inline-block;
 	cursor:pointer;
-	color:#666666;
+	color:#ffffff;
 	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
+	font-size:13px;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+	text-shadow:0px 1px 0px #854629;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color:#bc3315;
 }
 .myButton:active {
 	position:relative;
 	top:1px;
 }
 
+.login{
+  margin: 5% 25%;
+  padding: 2%;
+  width:46%;
+  border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666666;
+    text-align: center;
+}
+
+.registration{
+  margin: 2% 20%;
+  padding: 2%;
+  width:56%;
+  border-radius: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666666;
+    text-align: center;
+}
+
 .ListwB{
     width: 50%;
     margin: 2% 5%;
+    padding: 2%;
     position: absolute;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666666;
   }
 
   .ListwB h1{
@@ -106,6 +145,10 @@ nav ul {
     height: 70%;
     overflow: hidden;
     
+  border-width: 1px;
+  border-style: solid;
+  border-color: #666666;
+    
 }
 
 
@@ -114,11 +157,12 @@ nav ul {
     margin-top: 0px;
     border-radius:6px;
     color: white;
-    background-color: #2aa05f;
+    background-color: #4682B4;
 }
 
 .Basket table{
     width : 100%;
+    text-align: center;
 }
 
 .Basket #footBask{
@@ -127,14 +171,17 @@ nav ul {
 }
 
 .Basket2{
-  width: 30%;
-  margin: 2% 5%;
-  left: 60%;
+  width: 70%;
+  margin: 4% 15%;
+  padding: 0% 0% 2% 0%;
   text-align: center;
   background-color: #f6f6f6d7;;
   border-radius:6px;
   height: 70%;
-  overflow: hidden;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #666666;
   
 }
 
@@ -142,11 +189,15 @@ nav ul {
   margin-top: 0px;
   border-radius:6px;
   color: white;
-  background-color: #2aa05f;
+  background-color: #4682B4;
 }
 
 .Basket2 table{
   width : 100%;
+}
+
+.Basket2 button{
+  margin : 0.5%;
 }
 
 .Basket2 #footBask{
@@ -157,6 +208,20 @@ nav ul {
 .Bask{
     height: 85%;
     overflow: scroll;
+}
+
+.profile{
+  width: 40%;
+  margin: 2% 26%;
+  padding: 2%;
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #666666;
+  text-align: center;
+}
+.WriteComment{
+  text-align: center;
 }
 
 .wrapper {
@@ -172,9 +237,7 @@ nav ul {
 footer{
     background-color: #333;
     color: white;
-    /*position: absolute;
-    bottom: 0%;
-    width: 100%;*/
+    padding:0.5%;
     text-align: center;
 }
 

@@ -3,8 +3,7 @@
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php");?>
 
-    <div class="List">
-    <h1>Your Baskets</h1>
+    <h1 class="whereFrom">Your Baskets</h1>
     <?php
     include("include/Configuration.php");
         $UserData = $bdd->prepare('SELECT idU FROM user where Username = ? '); 
@@ -19,8 +18,7 @@
         $data = $reponse->fetch();
         if($data['IdC'] != null)
         {
-
-
+            $reponse = $bdd->query('SELECT * FROM choose where idU = '.$User["idU"].' order by NumberLA');
             while ($data = $reponse->fetch())  
             {
                 $Course = $bdd->query('SELECT * FROM course WHERE IdC ='.$data['IdC'].''); 
@@ -30,7 +28,7 @@
                     $ects = $rowCourse["ECTS"];
                     $IdC=$rowCourse["IdC"];
                 }
-                if($permut == 0)
+                if($permut === 0)
                 { 
                     $Univ = $bdd->query("select * from university where IdUnivers in(select IdUnivers from faculty where IdF in (select IdF from course where IdC  = '".$IdC."'))");
                     while ($Uni = $Univ->fetch())
@@ -45,13 +43,11 @@
                     $permut = $data['NumberLA']; 
                     $ectsTot=$ects;
                 ?>
-                    </div>
                     <div class="Basket2">
-                    <div class="Bask">
                         <h1>Here your basket <?php echo $data['NumberLA']?></h1>
-                        <h2>University : <?php echo $nameUnivers ?></h2>
-                        <h2>Faculty : <?php echo $nameFac ?></h2>
-                            <table id='tabBasket'>
+                        <h2><?php echo $nameUnivers ?></h2>
+                        <h2><?php echo $nameFac ?></h2>
+                            <table class='tabBasket'>
                                 <tr>
                                     <th>Course</th>
                                     <th>Ects</th>  
@@ -79,7 +75,7 @@
                     }
                 ?>
                     </table>
-                    </div>
+                    <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                     <form name="university" method="post" action="EditBasket.php">
                         <?php 
                         $c =0;
@@ -119,9 +115,8 @@
                         <button id="DeleteBasket" class="myButton">Download the Learning Agreement</button>
                     </form>
                     <?php    
-                    $idChoose=array(); //On réinitialise le tableau
+                    $idChoose=array();
                     ?>
-                    <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                     <form name="DeleteBasket" method="post" onclick="return confirm('Are you sure to delete this Basket?')" action="DeleteBasket.php">
                         <?php 
                         $permutPrevious = $permut-1;
@@ -131,10 +126,9 @@
                     </form>
                     </div>
                     <div class="Basket2">
-                    <div class="Bask">
                         <h1>Here your basket <?php echo $data['NumberLA']?></h1>
-                        <h2>University : <?php echo $nameUnivers ?></h2>
-                        <h2>Faculty : <?php echo $nameFac ?></h2>
+                        <h2><?php echo $nameUnivers ?></h2>
+                        <h2><?php echo $nameFac ?></h2>
                             <table id='tabBasket'>
                                 <tr>
                                     <th>Course</th>
@@ -155,7 +149,7 @@
 
                     <tr>
                     <td><?php echo $name;?></td> 
-                                    <td><?php echo $ects;?></td>
+                    <td><?php echo $ects;?></td>
                     
                     </tr>
 
@@ -166,7 +160,7 @@
             //print_r($idChoose);
                 ?>
             </table>
-                    </div>
+            <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                     <form name="university" method="post" action="EditBasket.php">
                         <?php 
                         //to edit the form, we'll need of the id of each course
@@ -207,7 +201,6 @@
                         ?>
                         <button class="myButton">Download the Learning Agreement</button>
                     </form>
-                    <p>ECTS total : <span id="total"><?php echo $ectsTot; $ectsTot = $ects; ?></span></p>
                     <form name="DeleteBasket" method="post" onclick="return confirm('Are you sure to delete this Basket?')" action="DeleteBasket.php">
                         <?php 
                         echo '<input type="hidden" name="LA" value="'.$permut.'">';
@@ -217,8 +210,8 @@
                     </div>
             <?php 
             }
-            else{?>
-            <h2 style="align-center">Your basket is empty ! </h2>
+            else{?><div style="height:35em">
+            <h2 style="text : align-center">Your basket is empty ! </h2></div>
             <?php 
             }
             ?>

@@ -23,10 +23,8 @@
                 $nameFac = $Fac['Name'];
             } 
             ?>
+            <h1 class="whereFrom"><?php echo $nameUniv;?> - <?php echo $nameFac;?> - Choose your courses</h1>
             <div class="ListwB">
-                <h1>University : <?php echo $nameUniv;?></h1>
-                <h1>Faculty : <?php echo $nameFac;?></h1>
-                <h1>Choose your courses</h1>
                 <table>
                     <tr>
                         <th>Course</th>
@@ -110,6 +108,7 @@
                         td1.innerHTML=name;
                         td2.innerHTML=ects;
                         del.innerHTML = "Remove"; //we define the text on the button
+                        del.classList.add("myButton")
                         del.setAttribute("onclick", "remove(" + idTr + ")");//we define the function of the button
                         td3.append(del);
                         tr.append(td1);

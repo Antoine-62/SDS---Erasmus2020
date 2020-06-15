@@ -8,10 +8,9 @@
     {
         $univName = $Unviver['Name'];
     }
-	?>
+    ?>
+    <h1 class="whereFrom"><strong><?php echo $univName;?></strong> - Choose your faculty</h1>
 <div class="List">
-    <h1><?php echo $univName;?></h1>
-    <h1>Choose your faculties</h1>
     <table>
                 <tr>
                     <th>Name of the faculty</th>

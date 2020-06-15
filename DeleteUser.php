@@ -7,6 +7,11 @@ if($bdd->query($sql))
 {
     echo "success";
 }
+$sql= "DELETE FROM comment where IdU = '".$idU."'";
+if($bdd->query($sql))
+{
+    echo "success";
+}
 $sql= "DELETE FROM user where IdU = '".$idU."'";
 if($bdd->query($sql))
 {

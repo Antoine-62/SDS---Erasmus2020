@@ -1,3 +1,6 @@
+<?php include("include/footer.php"); ?>
+
+
 <?php
 include("include/Head.php");?>
 <script src="Javascript/Comment.js"></script>
@@ -61,7 +64,7 @@ if(isset($_SESSION['IdC']))
             </div>
         </div>
         <div class="WriteComment">
-        <form name="Courses" method="post" action="Courses.php">  
+        <form name="Courses" method="post" action="Basket.php">  
                 <button class="myButton">Courses</button>
         </form><br/>
         </div>

@@ -2,8 +2,8 @@
 <?php include("include/Header.php"); ?>
 <?php include("include/nav.php"); ?>
 
+<h1 class="whereFrom">Universities List</h1>
 <div class="List">
-    <h1>Universities List</h1>
     <table>
                 <tr>
                     <th>Name</th>

@@ -36,8 +36,32 @@ $styleCell = array(
 	'borderTopSize'=>1 ,
 	'borderTopColor' =>'black',
 	'borderLeftSize'=>1,
+	'borderLeftColor' =>'black',
+	'borderRightSize'=>1,
+	'borderRightColor'=>'black',
+	'borderBottomSize' =>1,
+	'borderBottomColor'=>'black' 
+);
+
+$styleCell2 = array(
+	'borderLeftSize'=>1,
+	'borderLeftColor' =>'black',
+	'borderRightSize'=>1,
+	'borderRightColor'=>'black',
+);
+$styleCell3 = array(
+	'borderTopSize'=>1 ,
+	'borderTopColor' =>'black',
+	'borderLeftSize'=>1,
 	'borderLeftColor' =>'black'
 	,'borderRightSize'=>1,
+	'borderRightColor'=>'black',
+);
+
+$styleCell4 = array(
+	'borderLeftSize'=>1,
+	'borderLeftColor' =>'black',
+	'borderRightSize'=>1,
 	'borderRightColor'=>'black',
 	'borderBottomSize' =>1,
 	'borderBottomColor'=>'black' 
@@ -194,6 +218,14 @@ $TitlefontStyle = array(
 	'Spacing'=> 0,
 	'cellMargin'=>0);
 
+//style text
+$TextfontStyle = array(
+	'size'=>10,
+	'name' => 'Calibri',
+	'afterSpacing' => 0,
+	'Spacing'=> 0,
+	'cellMargin'=>0);
+
 //style text table
 $TfontStyle = array(
 	'size'=>8,
@@ -264,6 +296,10 @@ $header->addImage(
 		//'align'=>'left'
     )
 );
+
+/*Creation footer*/
+$footer = $section->addFooter();
+$footer->addPreserveText('{PAGE}',array('align' => 'center', 'spaceAfter' => 0));
 
 /*Creation of the table*/
 /*Information about the student*/	
@@ -698,15 +734,152 @@ $table9->addCell(2000, $styleCell)->addText('',$TfontStyleG,array('align' => 'ce
 $table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 $table9->addCell(3000, $styleCell)->addText('Total :',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
 $table9->addCell(4000, $styleCell)->addText('',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+
+$section->addPageBreak();
+
+$lineStyle = array('weight' => 1, 'width' => 100, 'height' => 0, 'color' => 000000);
+$section->addLine($lineStyle);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Nationality: ', $TitlefontStyle
+);
+$textrun->addText(
+    'country to which the person belongs administratively and that issues the ID card and/or passport.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Study cycle: ', $TitlefontStyle
+);
+$textrun->addText(
+	'Short cycle (EQF level 5) / Bachelor or equivalent first cycle (EQF level 6) / Master or equivalent second cycle '
+	.'(EQF level 7) / Doctorate or equivalent third cycle (EQF level 8).', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Field of education: ', $TitlefontStyle
+);
+$textrun->addText(
+	'The ISCED-F 2013 search tool available at http://ec.europa.eu/education/tools/isced-f_en.htm should be used '
+	.'to find the ISCED 2013 detailed field of education and training that is closest to the subject of the degree to be awarded to the '
+	.'student by the Sending Institution.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Erasmus code: ', $TitlefontStyle
+);
+$textrun->addText(
+	'a unique identifier that every higher education institution that has been awarded with the Erasmus Charter for Higher '
+	.'Education (ECHE) receives. It is only applicable to higher education institutions located in Programme Countries.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Contact person: ', $TitlefontStyle
+);
+$textrun->addText(
+	'person who provides a link for administrative information and who, depending on the structure of the higher education '
+	.'institution, may be the departmental coordinator or works at the international relations office or equivalent body within the '
+	.'institution.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'An "educational component"', $TitlefontStyle
+);
+$textrun->addText(
+	' is a self-contained and formal structured learning experience that features learning outcomes, credits and '
+	.'forms of assessment. Examples of educational components are: a course, module, seminar, laboratory work, practical work, preparation/research '
+	.'for a thesis, mobility window or free electives.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Course catalogue:', $TitlefontStyle
+);
+$textrun->addText(
+	' detailed, user-friendly and up-to-date information on the institution’s learning environment that should be available'
+	.' to students before the mobility period and throughout their studies to enable them to make the right choices and use their time most '
+	.'efficiently. The information concerns, for example, the qualifications offered, the learning, teaching and assessment procedures, the level'
+	.' of programmes, the individual educational components and the learning resources. The Course Catalogue should include the names of people '
+	.'to contact, with information about how, when and where to contact them.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'ECTS credits (or equivalent):', $TitlefontStyle
+);
+$textrun->addText(
+	' in countries where the "ECTS" system is not in place, in particular for institutions located in Partner '
+	.'Countries not participating in the Bologna process, "ECTS" needs to be replaced in the relevant tables by the name of the equivalent system'
+	.' that is used, and a web link to an explanation to the system should be added.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Level of language competence:', $TitlefontStyle
+);
+$textrun->addText(
+	' a description of the European Language Levels (CEFR) is available '
+	.'at: https://europass.cedefop.europa.eu/en/resources/european-language-levels-cefr', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Responsible person at the Sending Institution:', $TitlefontStyle
+);
+$textrun->addText(
+	' an academic who has the authority to approve the Learning Agreement, to exceptionally '
+	.'amend it when it is needed, as well as to guarantee full recognition of such programme on behalf of the responsible academic body. The '
+	.'name and email of the Responsible person must be filled in only in case it differs from that of the Contact person mentioned at the top '
+	.'of the document.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Responsible person at the Receiving Institution:', $TitlefontStyle
+);
+$textrun->addText(
+	' Responsible person at the Receiving Institution: the name and email of the Responsible person must be filled in only in case it differs '
+	.'from that of the Contact person mentioned at the top of the document.', $TextfontStyle
+);
+
+$textrun = $section->addTextRun();
+$textrun->addText(
+    'Reasons for exceptional changes to study programme abroad (choose an item number from the table below):', $TitlefontStyle
+);
+
+$table10 = $section->addTable([$tableStyle]);
+$table10->addRow();
+//$table10->addCell(6000, $cellRowSpan)->addText('Student',$TfontStyleG,array('align' => 'center', 'spaceAfter' => 0));
+$table10->addCell(7000, $styleCell)->addText('Reasons for deleting a component',$TitlefontStyle,array('spaceAfter' => 0));
+$table10->addCell(4000, $styleCell)->addText('Reason for adding a component',$TitlefontStyle,array('spaceAfter' => 0));
+$table10->addRow();
+$table10->addCell(7000, $styleCell3)->addText('1. Previously selected educational component is not available at the Receiving Institution',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addCell(4000, $styleCell3)->addText('5. Substituting a deleted component',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addRow();
+$table10->addCell(7000, $styleCell2)->addText('2. Component is in a different language than previously specified in the course catalogue',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addCell(4000, $styleCell2)->addText('6.Extending the mobility period',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addRow();
+$table10->addCell(7000, $styleCell2)->addText('3. Timetable conflict',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addCell(4000, $styleCell2)->addText('7. Other (please specify)',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addRow();
+$table10->addCell(7000, $styleCell4)->addText('4. Other (please specify)',$TextfontStyle,array('spaceAfter' => 0));
+$table10->addCell(4000, $styleCell4)->addText('',$TextfontStyle,array('spaceAfter' => 0));
+
+
 // Saving the document as OOXML file...
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 ob_clean();
-$objWriter->save('results/LearnExperiment.docx');
+$objWriter->save('results/LearningAgreement.docx');
 
 $contentType = 'Content-type: application/vnd.openxmlformats-officedocument.wordprocessingml.document;';
 
-$file = 'results/LearnExperiment.docx';
-$fileName = "LearnExperiment.docx";
+$file = 'results/LearningAgreement.docx';
+$fileName = "LearningAgreement.docx";
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 header("Content-Disposition: attachment; filename=\"".$fileName."\""); 

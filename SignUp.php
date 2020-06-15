@@ -3,9 +3,9 @@
 <div id="container">
     <?php include("include/Header.php"); ?>
     <?php include("include/nav.php"); ?>
+        <h1 class="whereFrom">Sign up</h1>
         <div class = "registration"> 
-            <h1> Sign up </h1> <br/>
-            <p> Please, fill in the form</p>
+            <h2><strong> Please, fill in the form</strong></h2>
             <form id="Registration" method="post" action="Registration.php">
                 <label>First Name : </label><input type="text" name="FirstName" id="FirstName" required="Fist name"/>
                 <label>Last Name : </label><input type="text" name="LastName" id="LastName" required="LastName"/><br/><br/>
@@ -25,9 +25,9 @@
                 <label>Phone number :  </label><input type="text" name="Phone" id="Phone" required="Phone"/><br/><br/>
                 <label> Password : </label><input type="password" name="Pwd" id="Pwd" required="Password"/>
                 <p>The password must contains at least 6 charaters, including letters and numbers</p><br/> 
-                <label for="cmdp">Please, confirm your password : </label><input type="password" name="Cpwd" id="Cpwd" required="Confirm your password"/>><br/><br/>
+                <label for="cmdp">Please, confirm your password : </label><input type="password" name="Cpwd" id="Cpwd" required="Confirm your password"/><br/><br/>
                             
-                <input type="submit" value="Sign up!"/>
+                <input class="myButton" type="submit" value="Sign up!"/>
             </form>
         </div>
 </div>
