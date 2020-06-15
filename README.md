@@ -37,14 +37,14 @@ Naturally, we will do the sprint review by using zoom.
 
 ### Retrieve the project
 #### With Xampp
-In your Xampp directory, go to the htdocs directory, then clone the project with following link :
+In your Xampp directory, go to the htdocs directory, create a new folder called "cela", then clone the project in this directory with following link :
 ```
 git clone https://github.com/Antoine-62/SDS---Erasmus2020.git
 ```
 Next, run Xampp (with *xampp-control.exe* located in the Xampp directory, launch apache and mysql modules).
 
 #### With Wampserver
-In your Wamp64 directory, go to the www directory, then clone the project with link located in Xampp part.  
+In your Wamp64 directory, go to the www directory, create a new folder called "cela", then clone the project in this directory with the link located in Xampp part.   
 Then, run wamp64.
 ### Create the Database
 #### With phpMyAdmin
