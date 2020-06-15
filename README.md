@@ -33,6 +33,28 @@ To communicate with the teachers, the Scrum Team will use email.
 Naturally, we will do the sprint review by using zoom.
 
 ## Installation manual
+**Requirement :** To run the application, you will need to have a local web server such as xampp or wampserver on your machine. In this description, we'll explain how to install the application with wampserver and xampp. 
 
-Comming soon...
+### Retrieve the project
+#### With Xampp
+In your Xampp directory, go to the htdocs directory, then clone the project with following link :
+```
+git clone https://github.com/Antoine-62/SDS---Erasmus2020.git
+```
+Next, run Xampp (with *xampp-control.exe* located in the Xampp directory, launch apache and mysql modules).
 
+#### With Wampserver
+In your Wamp64 directory, go to the www directory, then clone the project with link located in Xampp part.  
+Then, run wamp64.
+### Create the Database
+#### With phpMyAdmin
+Go to phpMyAdmin, then create a new database called **cela**, then import the script *cela.sql*, located in the script directory of the project. It will create the tables of our applications with some rows.
+
+#### With mySql terminal
+Open your mySql terminal, then execute the script *cela.sql*, located in the script directory of the project (The command is "source pathOfTheProject/cela2.sql";). By executing this script, it'll create a new database, cela, and some tables in this databse with some data. You can check if the table has been created by executing the following query : *select * from course*. It should display a lot of course.
+
+### Visit the website
+Now that we have our project in the local web server and created our database, we can run visit our application on the following url :
+```
+http://localhost/cela
+```
